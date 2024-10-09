@@ -29,6 +29,14 @@
           "source": "data:,KEYMAP%3Dde"
         },
         "mode": 420
+      },
+      {
+        "path": "/etc/NetworkManager/system-connections/enp4s0.nmconnection",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/0TLQarDIBSF4fldy9MXQygpxZWEDC56goJeRW0huy8NlHJGH5x/c0UEbsQiO0VvIXXpE42zwmIENMGgKAPtYAclnPH9bLG+lp3Y+4bejTX3WZvbqic9/8/L34+GfHBVhdLH1bvALUWQl25Xfe3xgerg5oKlzKc6OCZ7cOqgjBGKt5nlyYneAQAA///hhq/0sgAAAA=="
+        },
+        "mode": 384
       }
     ],
     "links": [

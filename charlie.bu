@@ -15,6 +15,21 @@ storage:
       mode: 0644
       contents:
         inline: KEYMAP=de
+    - path: /etc/NetworkManager/system-connections/enp4s0.nmconnection
+      mode: 0600
+      contents:
+        inline: |
+          [connection]
+          id=enp4s0
+          type=ethernet
+          interface-name=enp4s0
+          [ipv4]
+          address1=192.168.0.2/24,192.168.0.1
+          dhcp-hostname=charlie
+          dns=8.8.8.8;
+          dns-search=
+          may-fail=false
+          method=manual
   links:
     - path: /etc/localtime
       target: ../usr/share/zoneinfo/Europe/Berlin
