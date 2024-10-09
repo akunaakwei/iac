@@ -1,0 +1,7 @@
+variant: fcos
+version: 1.5.0
+passwd:
+  users:
+    - name: akuna
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjQg4xxpoNQeUuiapCXuahcnDmLvLq1H0B2CJTzdzKW
