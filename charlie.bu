@@ -5,3 +5,9 @@ passwd:
     - name: akuna
       ssh_authorized_keys:
         - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjQg4xxpoNQeUuiapCXuahcnDmLvLq1H0B2CJTzdzKW
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: charlie
