@@ -11,3 +11,7 @@ storage:
       mode: 0644
       contents:
         inline: charlie
+    - path: /etc/vconsole.conf
+      mode: 0644
+      contents:
+        inline: KEYMAP=de
