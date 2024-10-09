@@ -15,3 +15,6 @@ storage:
       mode: 0644
       contents:
         inline: KEYMAP=de
+  links:
+    - path: /etc/localtime
+      target: ../usr/share/zoneinfo/Europe/Berlin
