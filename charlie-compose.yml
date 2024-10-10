@@ -18,9 +18,9 @@ services:
       DHCP_ROUTER: 192.168.0.1
       PIHOLE_DOMAIN: internal
     # Volumes store your data between container upgrades
-    volumes:
-      - ./etc-pihole/:/etc/pihole/
-      - ./etc-dnsmasq.d/:/etc/dnsmasq.d/
+    # volumes:
+    #   - ./etc-pihole/:/etc/pihole/
+    #   - ./etc-dnsmasq.d/:/etc/dnsmasq.d/
     dns:
       - 127.0.0.1
     cap_add:
