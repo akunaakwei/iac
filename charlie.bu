@@ -34,6 +34,26 @@ storage:
           dns-search=
           may-fail=false
           method=manual
+    # run portainer agent
+    - path: /etc/containers/systemd/portainer-agent.container
+      contents:
+        inline: |
+          [Unit]
+          Description=Portainer Agent
+          Wants=network-online.target
+          After=network-online.target
+
+          [Container]
+          ContainerName=portainer-agent
+          Image=portainer/agent:2.22.0
+          GlobalArgs=--privileged
+          PublishPort=9001:9001
+          Volume=/run/podman/podman.sock:/var/run/docker.sock
+          Volume=/var/lib/containers/storage/volumes:/var/lib/docker/volume
+          Volume=/:/host
+
+          [Install]
+          WantedBy=multi-user.target
   # set the timezone to europe/berlin
   links:
     - path: /etc/localtime
