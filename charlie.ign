@@ -39,6 +39,36 @@
         "mode": 384
       },
       {
+        "group": {
+          "id": 0
+        },
+        "overwrite": true,
+        "path": "/etc/NetworkManager/NetworkManager.conf",
+        "user": {
+          "id": 0
+        },
+        "contents": {
+          "compression": "",
+          "source": "data:;base64,W21haW5dCmRucz1kZWZhdWx0CgpbbG9nZ2luZ10K"
+        },
+        "mode": 420
+      },
+      {
+        "group": {
+          "id": 0
+        },
+        "overwrite": true,
+        "path": "/etc/resolv.conf",
+        "user": {
+          "id": 0
+        },
+        "contents": {
+          "compression": "",
+          "source": "data:,"
+        },
+        "mode": 420
+      },
+      {
         "path": "/etc/containers/systemd/portainer-agent.container",
         "contents": {
           "compression": "gzip",
