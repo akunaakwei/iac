@@ -41,3 +41,5 @@ services:
       - "8080:8080"
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
+    dns:
+      - 192.168.0.3
