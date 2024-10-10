@@ -15,7 +15,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
-      - bridge
+      - treafik_network
 networks:
-  bridge:
-    external: true
+  treafik_network:
+    driver: bridge
