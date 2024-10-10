@@ -7,7 +7,7 @@ services:
       - "DOCKER_STEPCA_INIT_NAME=Smallstep"
       - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,stepca.internal"
   traefik:
-    image: "traefik:latest"
+    # image: "traefik:latest"
     container_name: "traefik"
     privileged: true
     build:
