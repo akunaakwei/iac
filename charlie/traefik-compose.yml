@@ -30,6 +30,15 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik0.entrypoints=web"
       - "traefik.http.routers.traefik0.rule=Host(`charlie.traefik.internal`)"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+
+      - "traefik.http.middlewares.traefik-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.traefik0.middlewares=traefik-redirect"
+
+      - "traefik.http.routers.traefik1.entrypoints=websecure"
+      - "traefik.http.routers.traefik1.rule=Host(`charlie.traefik.internal`)"
+      - "traefik.http.routers.traefik1.tls=true"
+      - "traefik.http.routers.traefik1.tls.certresolver=charlie"
     ports:
       - "80:80"
       - "443:443"
