@@ -60,23 +60,6 @@ storage:
 
           [Install]
           WantedBy=multi-user.target
-    # systemd configuration file for the Infinite Noise TRNG
-    - path: /etc/infnoise.conf
-      mode: 0644
-      contents:
-        inline: |
-          # systemd configuration file for the Infinite Noise TRNG
-
-          #INFNOISE_MULTIPLIER=10
-          # keccak multiplier, default = 1
-
-          INFNOISE_SERIAL=1337-D2407D73
-          # serial number of device, default: ""
-          # use infnoise --list-devices to find out your serial number
-
-          #INFNOISE_DEBUG=true
-          # debug mode, default: false
-          # debug logging to syslog  
   # set the timezone to europe/berlin
   links:
     - path: /etc/localtime
