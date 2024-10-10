@@ -36,17 +36,13 @@ storage:
           method=manual
     # Set network manager to use default dns
     - path: /etc/NetworkManager/conf.d/00-dns-default.conf
+      mode: 0644
       contents:
         inline: |
           [main]
           dns=default
 
           [logging]
-      mode: 0644
-      user:
-        id: 0
-      group:
-        id: 0
     # Ensure resolv.conf is a real file, not a symlink
     - path: /etc/resolv.conf
       overwrite: true

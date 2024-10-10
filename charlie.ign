@@ -39,13 +39,7 @@
         "mode": 384
       },
       {
-        "group": {
-          "id": 0
-        },
         "path": "/etc/NetworkManager/conf.d/00-dns-default.conf",
-        "user": {
-          "id": 0
-        },
         "contents": {
           "compression": "",
           "source": "data:;base64,W21haW5dCmRucz1kZWZhdWx0CgpbbG9nZ2luZ10K"
