@@ -43,6 +43,12 @@ storage:
           Wants=network-online.target
           After=network-online.target
 
+          [Service]
+          ExecStartPre=systemctl enable --now podman.socket
+
+          [Volume]
+          VolumeName=portainer
+
           [Container]
           ContainerName=portainer-agent
           Image=portainer/agent:2.22.0
