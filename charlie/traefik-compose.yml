@@ -47,6 +47,8 @@ services:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
     networks:
       - treafik_network
+    dns:
+      - 192.168.0.3
 networks:
   treafik_network:
     driver: bridge
