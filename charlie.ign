@@ -42,7 +42,7 @@
         "path": "/etc/containers/systemd/portainer-agent.container",
         "contents": {
           "compression": "gzip",
-          "source": "data:;base64,H4sIAAAAAAAC/3SQPU7EMBCFe5+CCyRetiOSiwAS2gZtAxSrFE4yeK04M9HMJIjbo3hJRENjW9+bn+d3ecOojXkG6ThOGgndmVh9ROC7OgCq+fCo4hD0i3goCFNEKNVzADX1pwL/o5nLE+FtUmP256sfwU3bisLnFafRhz/UZlody+OxPJiXRK1PNQdxRTFxXGKCAL05z22Kcl3tuofD4b5aD/NOaR7BWZ7RTtSPfrtKoW6o7OI5az11A3CGe8+qpdjabjMrVpTYB7BLLpFqr7n1//J9QmWvJOvXTyjqU2pyetA/frtxThqLWYC3gH4CAAD//0WwjUx8AQAA"
+          "source": "data:;base64,H4sIAAAAAAAC/3SQsU7EMAyG9zwFL9DmuI1KGQost6AuwHDqkGtNLmpqV7ZbxNuj5q4VC0sSfb9/2/nP7xi1Na8gHcdJI6FriNVHBH6oA6CaT48qDkG/iYeCMEWEUj0HUFN/KfA/mjm/EN46tWZ/vvkR3LSNKHwecRp9+ENtptWxPB7Lg2moHz3WHMQVxcRxiQkC9KaZLynKdV3XPR0Oj9V6mA9K8wjO8ox2ys77VQp1Q2UXz1nrqRuAM9w9q5bixXbbsmJFiX0Au+QSqfaam//O9w6VvZKsXz+hqE+pzelB//zjxjlpLGYB3gL6DQAA//9SdKIPfAEAAA=="
         }
       }
     ],
