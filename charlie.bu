@@ -124,6 +124,7 @@ systemd:
         Description=Wayward Geek InfNoise TRNG driver
         BindsTo=dev-infnoise.device
         After=dev-infnoise.device
+        Requires=rpm-ostree-install-infnoise.service
 
         [Service]
         Type=forking
