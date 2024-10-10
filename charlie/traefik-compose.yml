@@ -49,4 +49,3 @@ services:
       - treafik_network
 networks:
   treafik_network:
-    driver: slirp4netns
