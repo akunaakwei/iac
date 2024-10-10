@@ -5,10 +5,6 @@
   "passwd": {
     "users": [
       {
-        "groups": [
-          "wheel",
-          "sudo"
-        ],
         "name": "akuna",
         "sshAuthorizedKeys": [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjQg4xxpoNQeUuiapCXuahcnDmLvLq1H0B2CJTzdzKW"
