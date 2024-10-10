@@ -22,6 +22,7 @@ services:
       - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
+      - "--certificatesresolvers.charlie.acme.storage=acme.json"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik0.entrypoints=web"
@@ -41,5 +42,8 @@ services:
       - "8080:8080"
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
-    dns:
-      - 192.168.0.3
+    environment:
+      - "CERT_AUTH=https://smallstep.internal"
+      - "CERT_AUTH_PORT=9010"
+      - "CERT_AUTH_PROVISIONER=acme"
+      - "FINGERPRINT="
