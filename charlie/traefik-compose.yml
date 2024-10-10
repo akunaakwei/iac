@@ -10,9 +10,9 @@ services:
     image: "traefik:latest"
     container_name: "traefik"
     privileged: true
-    build:
-      context: .
-      dockerfile: traefik.Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: traefik.Dockerfile
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -20,7 +20,7 @@ services:
       - "--providers.docker.network=default"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
-      - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
+      # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
       - "--certificatesResolvers.charlie.acme.email=admin"
       - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
