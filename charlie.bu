@@ -2,19 +2,23 @@ variant: fcos
 version: 1.5.0
 passwd:
   users:
+    # create user akuna
     - name: akuna
       ssh_authorized_keys:
         - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjQg4xxpoNQeUuiapCXuahcnDmLvLq1H0B2CJTzdzKW
 storage:
   files:
+    # set the hostname to charlie
     - path: /etc/hostname
       mode: 0644
       contents:
         inline: charlie
+    # set the keyboard layout to de
     - path: /etc/vconsole.conf
       mode: 0644
       contents:
         inline: KEYMAP=de
+    # set a static ip address
     - path: /etc/NetworkManager/system-connections/enp4s0.nmconnection
       mode: 0600
       contents:
@@ -30,6 +34,7 @@ storage:
           dns-search=
           may-fail=false
           method=manual
+  # set the timezone to europe/berlin
   links:
     - path: /etc/localtime
       target: ../usr/share/zoneinfo/Europe/Berlin
