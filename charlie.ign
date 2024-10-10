@@ -42,8 +42,7 @@
         "group": {
           "id": 0
         },
-        "overwrite": true,
-        "path": "/etc/NetworkManager/NetworkManager.conf",
+        "path": "/etc/NetworkManager/conf.d/00-dns-default.conf",
         "user": {
           "id": 0
         },

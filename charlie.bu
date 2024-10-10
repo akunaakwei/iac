@@ -35,8 +35,7 @@ storage:
           may-fail=false
           method=manual
     # Set network manager to use default dns
-    - path: /etc/NetworkManager/NetworkManager.conf
-      overwrite: true
+    - path: /etc/NetworkManager/conf.d/00-dns-default.conf
       contents:
         inline: |
           [main]
