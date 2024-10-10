@@ -48,6 +48,14 @@
           "compression": "gzip",
           "source": "data:;base64,H4sIAAAAAAAC/3SRz26DMAzG73kKXiCk621IOXR/Dr1MSNW2Q8UhBY9GDQ6yDV3ffiIUtB12SSx//uyf7OM7eqnUC3BNvhcf0ZaRxHkEynYtoKhPh8IWQa6RLjpi8Ai5OGpB1O5LgP7R1PEANPoaKvX6DfVBHElJYPnGAl0tIQN0pwCZ1hivWR+bzmHOsb4k80cMQweVmv8314HtFzKljs8R57hSa/i3SLuEv+9cC7aZ2lLuo1l1k/Rim2+3+UaVafyOWrZa9+RHH6CFRpXDKXg+T0uxj5vNQzE9dyhraEAzg5tf/IUZHSXtPnZKrp5JC/5k6gWbDUsk14IZUwkXa83sv+fXDoU5R552tEcWF0KVbgTN0812QxCvBwZazvATAAD//zdnjG7iAQAA"
         }
+      },
+      {
+        "path": "/etc/infnoise.conf",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/1SOX0vDMBRH3/MpfiyvFjYnDIQ+KKsjUKt027N0zU28LE0kf4R+e1Fhzud7f+cciTSnTJPGGLxhW+KQOXgYdgQTIvI7QXnDnjOhC5wIh77bCSFV99S9qH3z9nxsD+q1VU1fr5ZC4kzjOJwxFZf5wzHFG2gyQ3EZNVZCXIb7plcPbb1arzfV9vZuudlu1kIiUeTBwZfpRBHBQNMnj3Sh3GOxEBIlEdgb/9NUVY5Trn4/E3KAYa8RSsYcSvzPvI7fNo/HXZ1jISGh6VQspqCvZWZw6e/ogrXs7bchzckFC4ivAAAA//8Wft87RQEAAA=="
+        },
+        "mode": 420
       }
     ],
     "links": [
