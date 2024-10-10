@@ -18,6 +18,7 @@ services:
       DHCP_END: 192.168.0.190
       DHCP_ROUTER: 192.168.0.1
       PIHOLE_DOMAIN: internal
+      VIRTUAL_HOST: pihole.internal
     # Volumes store your data between container upgrades
     volumes:
       - pihole_data:/etc/pihole/
