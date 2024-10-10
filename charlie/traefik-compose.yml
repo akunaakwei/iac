@@ -23,7 +23,6 @@ services:
       - "--entryPoints.websecure.address=:443"
       - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
       - "--certificatesResolvers.charlie.acme.email=admin"
-      - "--certificatesResolvers.charlie.acme.storage=/etc/acme/acme.json"
       - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9000/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
