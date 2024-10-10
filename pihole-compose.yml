@@ -20,8 +20,8 @@ services:
       PIHOLE_DOMAIN: internal
     # Volumes store your data between container upgrades
     volumes:
-      - ./etc-pihole/:/etc/pihole/:Z
-      - ./etc-dnsmasq.d/:/etc/dnsmasq.d/:Z
+      - pihole_data:/etc/pihole/
+      - dnsmasq_data:/etc/dnsmasq.d/
     dns:
       - 127.0.0.1
     cap_add:
@@ -31,7 +31,11 @@ services:
     networks:
       pihole_network:
         ipv4_address: 192.168.0.3
-
+volumes:
+  pihole_data:
+    driver: local
+  dnsmasq_data:
+    driver: local
 networks:
   pihole_network:
     driver: macvlan
