@@ -51,7 +51,7 @@ storage:
 
           [Container]
           ContainerName=portainer-agent
-          Image=portainer/agent:2.22.0
+          Image=docker.io/portainer/agent:2.22.0
           PodmanArgs=--privileged
           PublishPort=9001:9001
           Volume=/run/podman/podman.sock:/var/run/docker.sock
