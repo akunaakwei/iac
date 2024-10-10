@@ -10,6 +10,9 @@ services:
     image: "traefik:latest"
     container_name: "traefik"
     privileged: true
+    build:
+      context: .
+      dockerfile: traefik.Dockerfile
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
