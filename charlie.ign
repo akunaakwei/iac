@@ -61,9 +61,19 @@
         "name": "rpm-ostree-install-infnoise.service"
       },
       {
-        "contents": "[Unit]\nDescription=Wayward Geek InfNoise TRNG driver\nBindsTo=dev-infnoise.device\nAfter=dev-infnoise.device\n\n[Service]\nType=forking\nWorkingDirectory=/tmp\nExecStart=/usr/bin/infnoise --dev-random --daemon --pidfile /var/run/infnoise.pid\nUser=root\nGroup=root\nRestart=always\n\n[Install]\nWantedBy=multi-user.target",
+        "contents": "[Unit]\nDescription=Wayward Geek InfNoise TRNG driver\nBindsTo=dev-infnoise.device\nAfter=dev-infnoise.device\n\n[Service]\nType=forking\nWorkingDirectory=/tmp\nExecStart=/usr/bin/infnoise --dev-random --daemon --pidfile /var/run/infnoise.pid\nUser=root\nGroup=root\nRestart=always\n\n[Install]\nWantedBy=multi-user.target\n",
         "enabled": true,
         "name": "infnoise.service"
+      },
+      {
+        "enabled": false,
+        "mask": true,
+        "name": "coreos-migrate-to-systemd-resolved.service"
+      },
+      {
+        "enabled": false,
+        "mask": true,
+        "name": "systemd-resolved.service"
       }
     ]
   }

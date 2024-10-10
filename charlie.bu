@@ -110,3 +110,9 @@ systemd:
 
         [Install]
         WantedBy=multi-user.target
+    - name: coreos-migrate-to-systemd-resolved.service
+      enabled: false
+      mask: true
+    - name: systemd-resolved.service
+      enabled: false
+      mask: true
