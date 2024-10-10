@@ -80,6 +80,7 @@ systemd:
         # We run before `zincati.service` to avoid conflicting rpm-ostree
         # transactions.
         Before=zincati.service
+        ConditionPathExists=!/var/lib/%N.stamp
 
         [Service]
         Type=oneshot
@@ -89,6 +90,7 @@ systemd:
         # added to the root image in a future Fedora CoreOS release as it will
         # prevent the service from failing.
         ExecStart=/usr/bin/rpm-ostree install -y --allow-inactive https://13-37.org/files/infnoise-0.3.3-0.x86_64.rpm https://13-37.org/files/infnoise-tools-0.3.3-0.x86_64.rpm
+        ExecStart=/bin/touch /var/lib/%N.stamp
 
         [Install]
         WantedBy=multi-user.target
@@ -99,7 +101,6 @@ systemd:
         Description=Wayward Geek InfNoise TRNG driver
         BindsTo=dev-infnoise.device
         After=dev-infnoise.device
-        Requires=rpm-ostree-install-infnoise.service
 
         [Service]
         Type=forking
