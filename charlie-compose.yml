@@ -11,7 +11,7 @@ services:
     environment:
       TZ: Europe/Berlin
       TEMPERATUREUNIT: c
-      ServerIP: 192.168.1.249
+      ServerIP: 192.168.0.3
       PIHOLE_DNS_: 8.8.8.8;8.0.0.8
       DHCP_ACTIVE: true
       DHCP_START: 192.168.0.10
