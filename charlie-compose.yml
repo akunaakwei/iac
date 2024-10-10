@@ -11,7 +11,8 @@ services:
       TZ: Europe/Berlin
       TEMPERATUREUNIT: c
       ServerIP: 192.168.0.3
-      PIHOLE_DNS_: 8.8.8.8;8.0.0.8
+      PIHOLE_DNS_: 8.8.8.8;8.8.4.4
+      DNSSEC: true
       DHCP_ACTIVE: true
       DHCP_START: 192.168.0.10
       DHCP_END: 192.168.0.190
@@ -26,7 +27,7 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
-    privileged: true
+    # privileged: true
     networks:
       pihole_network:
         ipv4_address: 192.168.0.3
