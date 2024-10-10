@@ -91,6 +91,7 @@ systemd:
         # prevent the service from failing.
         ExecStart=/usr/bin/rpm-ostree install -y --allow-inactive libusb1 https://13-37.org/files/infnoise-0.3.3-0.x86_64.rpm https://13-37.org/files/infnoise-tools-0.3.3-0.x86_64.rpm
         ExecStart=/bin/touch /var/lib/%N.stamp
+        ExecStart=/bin/systemctl --no-block reboot
 
         [Install]
         WantedBy=multi-user.target
