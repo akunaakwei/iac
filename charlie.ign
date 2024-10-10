@@ -52,5 +52,14 @@
         "target": "../usr/share/zoneinfo/Europe/Berlin"
       }
     ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nDescription=Layer infnoise with rpm-ostree\nWants=network-online.target\nAfter=network-online.target\n# We run before `zincati.service` to avoid conflicting rpm-ostree\n# transactions.\nBefore=zincati.service\nConditionPathExists=!/var/lib/%N.stamp\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\n# `--allow-inactive` ensures that rpm-ostree does not return an error\n# if the package is already installed. This is useful if the package is\n# added to the root image in a future Fedora CoreOS release as it will\n# prevent the service from failing.\nExecStart=/usr/bin/rpm-ostree install -y --allow-inactive https://13-37.org/files/infnoise-0.3.3-0.x86_64.rpm https://13-37.org/files/infnoise-tools-0.3.3-0.x86_64.rpm\nExecStart=/bin/touch /var/lib/%N.stamp\nExecStart=/bin/systemctl --no-block reboot\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "rpm-ostree-install-infnoise.service"
+      }
+    ]
   }
 }
