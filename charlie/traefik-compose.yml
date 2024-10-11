@@ -27,7 +27,7 @@ services:
       - "--providers.docker.network=traefik_traefik_network"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
-      # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
+      - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
       - "--certificatesResolvers.charlie.acme.email=admin"
       - "--certificatesresolvers.charlie.acme.caserver=https://smallstep:9000/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
