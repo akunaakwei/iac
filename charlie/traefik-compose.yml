@@ -61,7 +61,6 @@ services:
   debug:
     image: "busybox:latest"
     container_name: "debug"
-    privileged: true
     networks:
       - traefik_network
     command:
