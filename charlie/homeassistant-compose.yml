@@ -31,3 +31,4 @@ networks:
           gateway: 192.168.0.1
   traefik_network:
     external: true
+    name: traefik_traefik_network
