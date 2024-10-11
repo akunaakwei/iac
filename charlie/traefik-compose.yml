@@ -9,6 +9,7 @@ services:
       - "DOCKER_STEPCA_INIT_ACME=true"
     networks:
       traefik_network:
+        ipv4_address: 192.168.0.4
         aliases:
           - "smallstep"
           - "smallstep.internal"
@@ -62,9 +63,10 @@ services:
       - NET_ADMIN
     networks:
       traefik_network:
+        ipv4_address: 192.168.0.4
         aliases:
           - "traefik"
-          - "charlie.traefik.internal"
+          - "charlie.traefik.internal"                
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
       - "smallstep_data:/usr/local/share/ca-certificates:ro,z"
