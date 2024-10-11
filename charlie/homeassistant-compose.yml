@@ -10,7 +10,7 @@ services:
       - "traefik.docker.network=traefik_traefik_network"
       - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.internal`)"
       - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
-      - "traefik.http.routers.homeassistant.tls=true"
+      - "traefik.http.routers.homeassistant.tls=false"
       - "traefik.http.routers.homeassistant.tls.certresolver=charlie"
       - "traefik.http.routers.homeassistant.entrypoints=web,websecure"
     ports:
