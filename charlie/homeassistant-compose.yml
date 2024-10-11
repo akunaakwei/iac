@@ -10,8 +10,8 @@ services:
       - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.internal`)"
       - "traefik.http.routers.homeassistant.tls=true"
       - "traefik.http.routers.homeassistant.tls.certresolver=charlie"
-    # ports:
-    #   - "8123:8123"
+    ports:
+      - "8123:8123"
     restart: unless-stopped
     privileged: true
     networks:
