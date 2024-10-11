@@ -58,14 +58,11 @@ services:
       - "80:80"
       - "443:443"
       - "8082:8080"
-    cap_add:
-      - NET_ADMIN
     networks:
       traefik_network:
-        ipv4_address: 192.168.0.4
         aliases:
           - "traefik"
-          - "charlie.traefik.internal"                
+          - "charlie.traefik.internal"
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
       - "smallstep_data:/usr/local/share/ca-certificates:ro,z"
@@ -74,12 +71,4 @@ volumes:
     driver: local
 networks:
   traefik_network:
-    driver: macvlan
-    driver_opts:
-      parent: enp5s0
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.0.0/24
-          ip_range: 192.168.0.4/32
-          gateway: 192.168.0.1
+    driver: bridge
