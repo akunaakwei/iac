@@ -14,7 +14,7 @@ services:
           - "smallstep.internal"
     volumes:
       - "root_certificates:/home/step/certs"
-      - "smallstep_data:/home/step"
+      # - "smallstep_data:/home/step"
   traefik:
     image: "traefik:latest"
     privileged: true
@@ -61,6 +61,7 @@ services:
   debug:
     image: "busybox:latest"
     container_name: "debug"
+    privileged: true
     networks:
       - traefik_network
     command:
