@@ -57,17 +57,6 @@ services:
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
       - "smallstep_data:/usr/local/share/ca-certificates:ro,z"
-  debug:
-    image: "busybox:latest"
-    container_name: "debug"
-    privileged: true
-    networks:
-      - traefik_network
-    command:
-      - "sleep"
-      - "infinity"
-    volumes:
-      - "smallstep_data:/usr/local/share/ca-certificates"
 volumes:
   smallstep_data:
     driver: local
