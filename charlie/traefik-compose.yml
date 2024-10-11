@@ -37,7 +37,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik0.entrypoints=web"
       - "traefik.http.routers.traefik0.rule=Host(`charlie.traefik.internal`)"
-      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8082"
 
       - "traefik.http.middlewares.traefik-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.traefik0.middlewares=traefik-redirect"
@@ -51,7 +51,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
+      - "8082:8080"
     networks:
       traefik_network:
         aliases:
