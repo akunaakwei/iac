@@ -1,0 +1,17 @@
+services:
+  homeassistant:
+    image: "homeassistant/home-assistant:latest"
+    volumes:
+        - homeassistant_data:/config
+        - "/etc/localtime:/etc/localtime:ro"
+        - "/run/dbus:/run/dbus:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.myweb.rule=Host(`homeassistant.internal`)"
+      - "traefik.http.routers.myweb.tls=true"
+      - "traefik.http.routers.myweb.tls.certresolver=charlie"
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+volumes:
+  homeassistant_data:
