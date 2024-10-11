@@ -6,6 +6,7 @@ services:
     environment:
       - "DOCKER_STEPCA_INIT_NAME=Smallstep"
       - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep,smallstep.internal"
+      - "DOCKER_STEPCA_INIT_ACME=true"
     networks:
       traefik_network:
         aliases:
