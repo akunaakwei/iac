@@ -13,8 +13,8 @@ services:
       - "traefik.http.routers.homeassistant.tls=true"
       - "traefik.http.routers.homeassistant.tls.certresolver=charlie"
       - "traefik.http.routers.homeassistant.entrypoints=websecure"
-      - "traefik.http.routers.homeassistantwss.rule=Host(`homeassistant.internal`)"
-      - "traefik.http.routers.homeassistantwss.entrypoints=web"
+      # - "traefik.http.routers.homeassistantwss.rule=Host(`homeassistant.internal`)"
+      # - "traefik.http.routers.homeassistantwss.entrypoints=web"
     ports:
       - "8123:8123"
     restart: unless-stopped
