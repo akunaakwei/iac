@@ -7,11 +7,11 @@ services:
         - "/run/dbus:/run/dbus:ro"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.myweb.rule=Host(`homeassistant.internal`)"
-      - "traefik.http.routers.myweb.tls=true"
-      - "traefik.http.routers.myweb.tls.certresolver=charlie"
-    ports:
-      - "8123:8123"
+      - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.internal`)"
+      - "traefik.http.routers.homeassistant.tls=true"
+      - "traefik.http.routers.homeassistant.tls.certresolver=charlie"
+    # ports:
+    #   - "8123:8123"
     restart: unless-stopped
     privileged: true
     networks:
