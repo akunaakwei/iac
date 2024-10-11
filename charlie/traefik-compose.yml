@@ -13,7 +13,6 @@ services:
           - "smallstep"
           - "smallstep.internal"
     volumes:
-      - "root_certificates:/home/step/certs"
       - "smallstep_data:/home/step"
   traefik:
     image: "traefik:latest"
@@ -25,7 +24,7 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=traefik_network"
+      - "--providers.docker.network=traefik_traefik_network"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
       # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
@@ -57,7 +56,7 @@ services:
       - traefik_network
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
-      - "root_certificates:/usr/local/share/ca-certificates:ro"
+      - "smallstep_data/certs:/usr/local/share/ca-certificates:ro"
   debug:
     image: "busybox:latest"
     container_name: "debug"
@@ -68,11 +67,9 @@ services:
       - "sleep"
       - "infinity"
     volumes:
-      - "root_certificates:/usr/local/share/ca-certificates"
+      - "smallstep_data/certs:/usr/local/share/ca-certificates"
 volumes:
   smallstep_data:
-    driver: local
-  root_certificates:
     driver: local
 networks:
   traefik_network:
