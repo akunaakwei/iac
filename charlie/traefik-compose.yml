@@ -67,7 +67,7 @@ services:
       - "sleep"
       - "infinity"
     volumes:
-      - "root_certificates:/usr/local/share/ca-certificates:ro"
+      - "root_certificates:/usr/local/share/ca-certificates"
 volumes:
   smallstep_data:
     driver: local
