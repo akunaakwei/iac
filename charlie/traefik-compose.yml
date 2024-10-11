@@ -55,6 +55,8 @@ services:
   debug:
     image: "busybox:latest"
     container_name: "debug"
+    networks:
+      - traefik_network
     command:
       - "sleep"
       - "infinity"
