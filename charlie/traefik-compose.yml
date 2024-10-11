@@ -11,6 +11,8 @@ services:
         aliases:
           - "smallstep"
           - "smallstep.internal"
+    volumes:
+      - "root_certificates:/home/step/certs"
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
@@ -44,6 +46,8 @@ services:
       - "traefik.http.routers.traefik1.rule=Host(`charlie.traefik.internal`)"
       - "traefik.http.routers.traefik1.tls=true"
       - "traefik.http.routers.traefik1.tls.certresolver=charlie"
+    environment:
+      LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/root_ca.crt"
     ports:
       - "80:80"
       - "443:443"
@@ -52,6 +56,7 @@ services:
       - traefik_network
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
+      - "root_certificates:/usr/local/share/ca-certificates:ro"
   debug:
     image: "busybox:latest"
     container_name: "debug"
@@ -60,6 +65,9 @@ services:
     command:
       - "sleep"
       - "infinity"
+volumes:
+  root_certificates:
+    driver: local
 networks:
   traefik_network:
     driver: bridge
