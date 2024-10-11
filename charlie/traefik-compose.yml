@@ -34,7 +34,7 @@ services:
       - "--certificatesresolvers.charlie.acme.caserver=https://smallstep:9000/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
-      # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
+      - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
       - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
     labels:
       - "traefik.enable=true"
