@@ -73,4 +73,12 @@ volumes:
     driver: local
 networks:
   traefik_network:
-    driver: bridge
+    driver: macvlan
+    driver_opts:
+      parent: enp4s0
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+          ip_range: 192.168.0.4/32
+          gateway: 192.168.0.1
