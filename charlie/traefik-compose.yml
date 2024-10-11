@@ -1,6 +1,7 @@
 services:
   stepca:
     image: smallstep/step-ca
+    privileged: true
     ports:
       - 9010:9000
     environment:
@@ -16,7 +17,6 @@ services:
       - "smallstep_data:/home/step:Z"
   traefik:
     image: "traefik:latest"
-    container_name: "traefik"
     privileged: true
     depends_on:
       - stepca
