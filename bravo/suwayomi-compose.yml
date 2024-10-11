@@ -7,9 +7,11 @@ services:
       - FLARESOLVERR_ENABLED=true
       - FLARESOLVERR_URL=http://flaresolverr:8191
       - DOWNLOAD_AS_CBZ=true
+      - AUTO_DOWNLOAD_CHAPTERS=true
       - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
     volumes:
-      - /mnt/shipyard/white container/Comics:/home/suwayomi/.local/share/Tachidesk
+      - /mnt/shipyard/white container/Comics:/home/suwayomi/.local/share/Tachidesk/mangas
+      - suwayomi_data:/home/suwayomi/.local/share/Tachidesk
     ports:
       - "4567:4567"
     restart: on-failure:3
@@ -21,3 +23,6 @@ services:
     ports:
       - "8191:8191"
     restart: unless-stopped
+volumes:
+  suwayomi_data:
+    driver: local
