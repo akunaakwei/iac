@@ -7,10 +7,7 @@ services:
       - "DOCKER_STEPCA_INIT_NAME=Smallstep"
       - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep,smallstep.internal"
     networks:
-      traefik_network:
-        aliases:
-          - "smallstep.internal"
-          - "smallstep"
+      - traefik_network
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
@@ -20,7 +17,7 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=default"
+      - "--providers.docker.network=traefik_network"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
       # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
@@ -47,9 +44,7 @@ services:
       - "443:443"
       - "8080:8080"
     networks:
-      traefik_network:
-        aliases:
-          - "charlie.traefik.internal"
+      - traefik_network
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
   debug:
