@@ -9,7 +9,6 @@ services:
       - "DOCKER_STEPCA_INIT_ACME=true"
     networks:
       traefik_network:
-        ipv4_address: 192.168.0.4
         aliases:
           - "smallstep"
           - "smallstep.internal"
