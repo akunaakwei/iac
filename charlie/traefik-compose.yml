@@ -10,6 +10,7 @@ services:
       traefik_network:
         aliases:
           - "smallstep.internal"
+          - "smallstep"
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
