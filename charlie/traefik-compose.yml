@@ -35,7 +35,7 @@ services:
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
       # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
-      - "--certificatesresolvers.charlie.acme.storage=acme.json"
+      - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
     labels:
       - "traefik.enable=true"
       # - "traefik.http.middlewares.httpsonly.redirectscheme.scheme=https"
@@ -67,8 +67,11 @@ services:
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
       - "smallstep_data:/usr/local/share/ca-certificates:ro,z"
+      - "traefik_data:/traefik_data"
 volumes:
   smallstep_data:
+    driver: local
+  traefik_data:
     driver: local
 networks:
   traefik_network:
