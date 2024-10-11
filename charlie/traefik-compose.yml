@@ -49,5 +49,3 @@ services:
     command:
       - "sleep"
       - "infinity"
-    ports:
-      - "8080:8080"
