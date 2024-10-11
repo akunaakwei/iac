@@ -13,6 +13,7 @@ services:
           - "smallstep.internal"
     volumes:
       - "root_certificates:/home/step/certs:z"
+      - "smallstep_data:/home/step:Z"
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
@@ -68,6 +69,8 @@ services:
     volumes:
       - "root_certificates:/usr/local/share/ca-certificates:ro,z"
 volumes:
+  smallstep_data:
+    driver: local
   root_certificates:
     driver: local
 networks:
