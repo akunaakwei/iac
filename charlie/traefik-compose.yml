@@ -1,7 +1,6 @@
 services:
   stepca:
     image: smallstep/step-ca
-    privileged: true
     ports:
       - 9010:9000
     environment:
@@ -13,14 +12,12 @@ services:
           - "smallstep"
           - "smallstep.internal"
     volumes:
-      - "smallstep_data:/home/step"
+      - "smallstep_data:/home/step:z"
   traefik:
     image: "traefik:latest"
-    privileged: true
     depends_on:
       - stepca
     command:
-      - "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -56,7 +53,7 @@ services:
       - traefik_network
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
-      - "smallstep_data:/usr/local/share/ca-certificates:ro"
+      - "smallstep_data:/usr/local/share/ca-certificates:ro,z"
   debug:
     image: "busybox:latest"
     container_name: "debug"
