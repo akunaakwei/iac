@@ -24,7 +24,7 @@ services:
       - "--log=true"
       - "--log.level=DEBUG"
       - "--api.dashboard=true"
-      - "--api.insecure=false"
+      - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.network=traefik_traefik_network"
