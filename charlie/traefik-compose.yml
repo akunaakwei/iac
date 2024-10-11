@@ -12,6 +12,8 @@ services:
     image: "traefik:latest"
     container_name: "traefik"
     privileged: true
+    depends_on:
+      - stepca
     command:
       - "--log.level=DEBUG"
       - "--api.insecure=true"
