@@ -3,7 +3,7 @@ services:
     #build:
     #  context: .
     #  dockerfile: Dockerfile
-    image: charlie/ntfy
+    image: binwiederhier/ntfy:latest
     container_name: ntfy
     command:
       - serve
