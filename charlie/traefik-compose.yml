@@ -41,8 +41,8 @@ services:
       - "traefik.http.routers.traefik0.rule=Host(`charlie.traefik.internal`)"
       - "traefik.http.services.traefik.loadbalancer.server.port=8082"
 
-      - "traefik.http.middlewares.traefik-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.traefik0.middlewares=traefik-redirect"
+      # - "traefik.http.middlewares.traefik-redirect.redirectscheme.scheme=https"
+      # - "traefik.http.routers.traefik0.middlewares=traefik-redirect"
 
       - "traefik.http.routers.traefik1.entrypoints=websecure"
       - "traefik.http.routers.traefik1.rule=Host(`charlie.traefik.internal`)"
