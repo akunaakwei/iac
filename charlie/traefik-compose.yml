@@ -50,6 +50,7 @@ services:
       - "traefik.http.routers.api.tls.certresolver=charlie"
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
+      TRAEFIK_TRACING: true   
     ports:
       - "80:80"
       - "443:443"
