@@ -23,7 +23,6 @@ services:
     command:
       - "--log=true"
       - "--log.level=DEBUG"
-      - "--api.dashboard=true"
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
