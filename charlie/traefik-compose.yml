@@ -41,6 +41,7 @@ services:
       - "traefik.http.middlewares.httpsonly.redirectscheme.permanent=true"
       - "traefik.http.routers.httpsonly.rule=HostRegexp(`{any:.*}`)"
       - "traefik.http.routers.httpsonly.middlewares=httpsonly"
+      - "traefik.http.routers.httpsonly.entrypoints=web"
       - "traefik.http.routers.dashboard.rule=Host(`charlie.traefik.internal`)"
       - "traefik.http.routers.dashboard.service=dashboard@internal"
       #- "traefik.http.routers.dashboard.entrypoints=websecure"
