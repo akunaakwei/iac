@@ -13,7 +13,7 @@ services:
           - "smallstep"
           - "smallstep.internal"
     volumes:
-      - "root_certificates:/home/step/certs,z"
+      - "root_certificates:/home/step/certs"
       - "smallstep_data:/home/step:Z"
   traefik:
     image: "traefik:latest"
