@@ -46,6 +46,3 @@ services:
   debug:
     image: "busybox:latest"
     container_name: "debug"
-    command:
-      - "sleep"
-      - "infinity"
