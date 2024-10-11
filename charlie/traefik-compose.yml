@@ -65,6 +65,8 @@ services:
     command:
       - "sleep"
       - "infinity"
+    volumes:
+      - "root_certificates:/usr/local/share/ca-certificates:ro,z"
 volumes:
   root_certificates:
     driver: local
