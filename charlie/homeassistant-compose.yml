@@ -12,7 +12,7 @@ services:
       - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
       - "traefik.http.routers.homeassistant.tls=false"
       - "traefik.http.routers.homeassistant.tls.certresolver=charlie"
-      - "traefik.http.routers.homeassistant.entrypoints=web,websecure"
+      - "traefik.http.routers.homeassistant.entrypoints=web"
     ports:
       - "8123:8123"
     restart: unless-stopped
