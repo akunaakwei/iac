@@ -52,7 +52,10 @@ services:
       - "443:443"
       - "8080:8080"
     networks:
-      - traefik_network
+      traefik_network:
+        aliases:
+          - "traefik"
+          - "charlie.traefik.internal"
     volumes:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
       - "smallstep_data:/usr/local/share/ca-certificates:ro,z"
