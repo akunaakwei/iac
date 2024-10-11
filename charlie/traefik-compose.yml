@@ -5,7 +5,7 @@ services:
       - 9010:9000
     environment:
       - "DOCKER_STEPCA_INIT_NAME=Smallstep"
-      - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep.internal"
+      - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep,smallstep.internal"
     networks:
       traefik_network:
         aliases:
@@ -25,7 +25,7 @@ services:
       - "--entryPoints.websecure.address=:443"
       # - "--certificatesResolvers.charlie.acme.tlsChallenge=true"
       - "--certificatesResolvers.charlie.acme.email=admin"
-      - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
+      - "--certificatesresolvers.charlie.acme.caserver=https://smallstep:9010/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.charlie.acme.storage=acme.json"
