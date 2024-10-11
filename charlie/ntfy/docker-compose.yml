@@ -28,7 +28,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_traefik_network"
-      - "traefik.http.services.ntfy.loadbalancer.server.port=8123"
       - "traefik.http.routers.ntfy.rule=Host(`ntfy.internal`)"
       - "traefik.http.routers.ntfy.tls=true"
       - "traefik.http.routers.ntfy.tls.certresolver=charlie"
