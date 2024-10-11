@@ -51,7 +51,7 @@ services:
       - "traefik.http.routers.dashboard.tls.certresolver=charlie"
       - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.api.tls.certresolver=charlie"
-      - "traefik.http.routers.api.tls.entrypoints=websecure"
+      - "traefik.http.routers.api.entrypoints=websecure"
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
     ports:
