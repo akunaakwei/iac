@@ -1,0 +1,23 @@
+services:
+  suwayomi:
+    image: ghcr.io/suwayomi/tachidesk:preview
+    environment:
+      - TZ=Europe/Berlin # Use TZ database name from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      # Comment these out if you do not use the flaresolverr container at the bottom of this file
+      - FLARESOLVERR_ENABLED=true
+      - FLARESOLVERR_URL=http://flaresolverr:8191
+      - DOWNLOAD_AS_CBZ=true
+      - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
+    volumes:
+      - /mnt/shipyard/white container/Comics:/home/suwayomi/.local/share/Tachidesk
+    ports:
+      - "4567:4567"
+    restart: on-failure:3
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - TZ=Europe/Berlin # Use TZ database name from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    ports:
+      - "8191:8191"
+    restart: unless-stopped
