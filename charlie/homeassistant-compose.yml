@@ -12,6 +12,22 @@ services:
       - "traefik.http.routers.myweb.tls.certresolver=charlie"
     restart: unless-stopped
     privileged: true
-    network_mode: host
+    networks:
+      ha_network:
+        ipv4_address: 192.168.0.4
+      traefik_network:
 volumes:
   homeassistant_data:
+networks:
+  ha_network:
+    driver: macvlan
+    driver_opts:
+      parent: enp4s0
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+          ip_range: 192.168.0.4/32
+          gateway: 192.168.0.1
+  traefik_network:
+    external: true
