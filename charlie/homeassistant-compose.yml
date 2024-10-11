@@ -10,6 +10,8 @@ services:
       - "traefik.http.routers.myweb.rule=Host(`homeassistant.internal`)"
       - "traefik.http.routers.myweb.tls=true"
       - "traefik.http.routers.myweb.tls.certresolver=charlie"
+    ports:
+      - "8123:8123"
     restart: unless-stopped
     privileged: true
     networks:
@@ -22,7 +24,7 @@ networks:
   ha_network:
     driver: macvlan
     driver_opts:
-      parent: enp4s0
+      parent: enp5s0
     ipam:
       driver: default
       config:
