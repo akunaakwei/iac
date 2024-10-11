@@ -1,8 +1,9 @@
 services:
   ntfy:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
+    image: charlie/ntfy
     container_name: ntfy
     command:
       - serve
