@@ -21,6 +21,8 @@ services:
     depends_on:
       - stepca
     command:
+      - "--log=true"
+      - "--log.level=DEBUG"
       - "--api.dashboard=true"
       - "--api.insecure=false"
       - "--providers.docker=true"
