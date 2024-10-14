@@ -13,22 +13,22 @@ services:
       - "--providers.docker.network=traefik_traefik_network"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
-      - "--certificatesResolvers.charlie.acme.email=admin"
-      - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
-      - "--certificatesResolvers.charlie.acme.httpChallenge=true"
-      - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
-      - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
+      - "--certificatesResolvers.bravo.acme.email=admin"
+      - "--certificatesresolvers.bravo.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
+      - "--certificatesResolvers.bravo.acme.httpChallenge=true"
+      - "--certificatesResolvers.bravo.acme.httpChallenge.entryPoint=web"
+      - "--certificatesresolvers.bravo.acme.storage=/traefik_data/acme.json"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.dashboard.rule=Host(`charlie.traefik.internal`)"
+      - "traefik.http.routers.dashboard.rule=Host(`bravo.traefik.internal`)"
       - "traefik.http.routers.dashboard.service=dashboard@internal"
       - "traefik.http.routers.dashboard.entrypoints=web,websecure"
-      - "traefik.http.routers.api.rule=Host(`charlie.traefik.internal`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.api.rule=Host(`bravo.traefik.internal`) && PathPrefix(`/api`)"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.dashboard.tls=true"
-      - "traefik.http.routers.dashboard.tls.certresolver=charlie"
+      - "traefik.http.routers.dashboard.tls.certresolver=bravo"
       - "traefik.http.routers.api.tls=true"
-      - "traefik.http.routers.api.tls.certresolver=charlie"
+      - "traefik.http.routers.api.tls.certresolver=bravo"
       - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
@@ -40,7 +40,7 @@ services:
       traefik_network:
         aliases:
           - "traefik"
-          - "charlie.traefik.internal"
+          - "bravo.traefik.internal"
     dns:
       - 192.168.0.3
     volumes:
