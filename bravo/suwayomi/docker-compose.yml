@@ -14,7 +14,7 @@ services:
       - "traefik.docker.network=traefik_traefik_network"
       - "traefik.http.routers.suwayomi.rule=Host(`suwayomi.internal`)"
       - "traefik.http.routers.suwayomi.tls=true"
-      - "traefik.http.routers.suwayomi.tls.certresolver=charlie"
+      - "traefik.http.routers.suwayomi.tls.certresolver=bravo"
       - "traefik.http.routers.suwayomi.entrypoints=websecure"
     volumes:
       - /mnt/shipyard/white container/Comics:/home/suwayomi/.local/share/Tachidesk/mangas
