@@ -44,7 +44,7 @@ services:
     dns:
       - 192.168.0.3
     volumes:
-      - "/run/run/docker.sock:/var/run/docker.sock:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
       # - "smallstep_data:/usr/local/share/ca-certificates:ro"
       - "traefik_data:/traefik_data"
     restart: unless-stopped
