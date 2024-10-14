@@ -1,12 +1,20 @@
 services:
+  bootstrap:
+    image: busybox:stable
+    entrypoint: ["/bin/busybox", "wget ", "--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
+    volumes:
+      - certs_data:/usr/local/share/ca-certificates
+    restart: never
   traefik:
     image: "traefik:latest"
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
     # needs to be privileged to access docker socket
     privileged: true
     command:
       - "--log=true"
       - "--log.level=DEBUG"
-
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -31,7 +39,7 @@ services:
       - "traefik.http.routers.api.tls.certresolver=bravo"
       - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
-      LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
+      LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/root.pem"
     ports:
       - "80:80"
       - "443:443"
@@ -47,6 +55,8 @@ services:
     restart: unless-stopped
 volumes:
   traefik_data:
+    driver: local
+  certs_data:
     driver: local
 networks:
   traefik_network:
