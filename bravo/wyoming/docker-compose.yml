@@ -1,0 +1,43 @@
+services:
+  whisper:
+    image: rhasspy/wyoming-whisper
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_traefik_network"
+      - "traefik.http.routers.wyomingwhisper.rule=Host(`whisper.wyoming.internal`)"
+      - "traefik.http.routers.wyomingwhisper.tls=true"
+      - "traefik.http.routers.wyomingwhisper.tls.certresolver=bravo"
+      - "traefik.http.routers.wyomingwhisper.entrypoints=websecure"
+    ports:
+      - "10300:10300"
+    networks:
+      - traefik_network
+    volumes:
+      - whisper_data:/data
+  piper:
+    image: rhasspy/wyoming-piper
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_traefik_network"
+      - "traefik.http.routers.wyomingpiper.rule=Host(`piper.wyoming.internal`)"
+      - "traefik.http.routers.wyomingpiper.tls=true"
+      - "traefik.http.routers.wyomingpiper.tls.certresolver=bravo"
+      - "traefik.http.routers.wyomingpiper.entrypoints=websecure"
+    ports:
+      - "10200:10200"
+    networks:
+      - traefik_network
+    volumes:
+      - piper_data:/data
+
+volumes:
+  whisper_data:
+    driver: local
+  piper_data:
+    driver: local
+networks:
+  traefik_network:
+    external: true
+    name: traefik_traefik_network
