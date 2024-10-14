@@ -12,6 +12,8 @@ services:
         aliases:
           - "smallstep"
           - "smallstep.internal"
+    dns:
+      - 192.168.0.3
     volumes:
       - "smallstep_data:/home/step"
     # healthcheck: # optional: remember to adapt the host:port to your environment
