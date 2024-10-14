@@ -1,7 +1,7 @@
 services:
   bootstrap:
     image: busybox:stable
-    entrypoint: ["/bin/wget", "--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
+    entrypoint: ["/bin/curl", "-k", "https://smallstep.internal:9010/roots.pem", "-o", "/usr/local/share/ca-certificates/roots.pem"]
     volumes:
       - certs_data:/usr/local/share/ca-certificates
     restart: no
