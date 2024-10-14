@@ -1,9 +1,10 @@
 services:
+  # sidecar to download ca certificate
   bootstrap:
     image: alpine:latest
-    # entrypoint: "/bin/wget"
-    # command: ["--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
-    command: ["sleep", "infinity"]
+    entrypoint: "/usrbin/wget"
+    command: ["--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
+    # command: ["sleep", "infinity"]
     volumes:
       - certs_data:/usr/local/share/ca-certificates
     restart: no
