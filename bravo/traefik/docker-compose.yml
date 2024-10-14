@@ -4,15 +4,14 @@ services:
     image: alpine:latest
     entrypoint: "/usr/bin/wget"
     command: ["--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
-    # command: ["sleep", "infinity"]
     volumes:
       - certs_data:/usr/local/share/ca-certificates
     restart: no
   traefik:
     image: "traefik:latest"
-    # depends_on:
-    #   bootstrap:docker
-    #     condition: service_completed_successfully
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
     # needs to be privileged to access docker socket
     privileged: true
     command:
@@ -42,7 +41,7 @@ services:
       - "traefik.http.routers.api.tls.certresolver=bravo"
       - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
-      LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/root.pem"
+      LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/roots.pem"
     ports:
       - "80:80"
       - "443:443"
