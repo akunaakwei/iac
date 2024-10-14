@@ -25,9 +25,9 @@ services:
     image: "traefik:latest"
     # needs to be privileged to access docker socket
     privileged: true
-    depends_on:
-      stepca:
-        condition: service_healthy
+    # depends_on:
+    #   stepca:
+    #     condition: service_healthy
     command:
       - "--log=true"
       - "--log.level=DEBUG"
