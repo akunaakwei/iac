@@ -7,9 +7,9 @@ services:
     restart: no
   traefik:
     image: "traefik:latest"
-    depends_on:
-      bootstrap:
-        condition: service_completed_successfully
+    # depends_on:
+    #   bootstrap:
+    #     condition: service_completed_successfully
     # needs to be privileged to access docker socket
     privileged: true
     command:
