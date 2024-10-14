@@ -4,7 +4,7 @@ services:
     entrypoint: ["/bin/busybox", "wget ", "--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
     volumes:
       - certs_data:/usr/local/share/ca-certificates
-    restart: never
+    restart: no
   traefik:
     image: "traefik:latest"
     depends_on:
