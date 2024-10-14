@@ -1,6 +1,6 @@
 services:
   bootstrap:
-    image: busybox:stable
+    image: alpine:latest
     # entrypoint: "/bin/wget"
     # command: ["--no-check-certificate", "https://smallstep.internal:9010/roots.pem", "-O", "/usr/local/share/ca-certificates/roots.pem"]
     command: ["sleep", "infinity"]
@@ -10,7 +10,7 @@ services:
   traefik:
     image: "traefik:latest"
     # depends_on:
-    #   bootstrap:
+    #   bootstrap:docker
     #     condition: service_completed_successfully
     # needs to be privileged to access docker socket
     privileged: true
