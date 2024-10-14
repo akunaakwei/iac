@@ -20,6 +20,7 @@ services:
         timeout: 10s
         retries: 3
         start_period: 40s
+    restart: unless-stopped
   traefik:
     image: "traefik:latest"
     # needs to be privileged to access docker socket
@@ -75,6 +76,7 @@ services:
       - "/run/podman/podman.sock:/var/run/docker.sock:ro"
       - "smallstep_data:/usr/local/share/ca-certificates:ro"
       - "traefik_data:/traefik_data"
+    restart: unless-stopped
 volumes:
   smallstep_data:
     driver: local
