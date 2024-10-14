@@ -12,10 +12,7 @@ services:
     volumes:
       - ntfy_cache:/var/cache/ntfy:Z
     networks:
-      traefik_network:
-        aliases:
-          - "ntfy"
-          - "ntfy.internal"
+      - traefik_network
     # ports:
     #   - 8010:80
     healthcheck: # optional: remember to adapt the host:port to your environment
