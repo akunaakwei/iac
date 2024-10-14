@@ -19,6 +19,8 @@ services:
     volumes:
       - /mnt/shipyard/white container/Comics:/home/suwayomi/.local/share/Tachidesk/mangas
       - suwayomi_data:/home/suwayomi/.local/share/Tachidesk
+    networks:
+      - traefik_network
     ports:
       - "4567:4567"
     restart: on-failure:3
@@ -33,3 +35,7 @@ services:
 volumes:
   suwayomi_data:
     driver: local
+networks:
+  traefik_network:
+    external: true
+    name: traefik_traefik_network
