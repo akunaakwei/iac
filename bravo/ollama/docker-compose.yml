@@ -1,9 +1,18 @@
 services:
   webui:
     image: ghcr.io/open-webui/open-webui:main
-    restart: always
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_traefik_network"
+      - "traefik.http.routers.ollama.rule=Host(`ollama.internal`)"
+      - "traefik.http.routers.ollama.tls=true"
+      - "traefik.http.routers.ollama.tls.certresolver=bravo"
+      - "traefik.http.routers.ollama.entrypoints=websecure"
     ports:
       - "3000:8080"
+    networks:
+      - traefik_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -11,8 +20,17 @@ services:
 
   ollama:
     image: ollama/ollama:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_traefik_network"
+      - "traefik.http.routers.apiollama.rule=Host(`api.ollama.internal`)"
+      - "traefik.http.routers.apiollama.tls=true"
+      - "traefik.http.routers.apiollama.tls.certresolver=bravo"
+      - "traefik.http.routers.apiollama.entrypoints=websecure"
     ports:
       - "11434:11434"
+    networks:
+      - traefik_network
     volumes:
       - ollama_data:/root/.ollama
 
@@ -21,3 +39,7 @@ volumes:
     driver: local
   webui_data:
     driver: local
+networks:
+  traefik_network:
+    external: true
+    name: traefik_traefik_network
