@@ -9,6 +9,13 @@ services:
       - DOWNLOAD_AS_CBZ=true
       - AUTO_DOWNLOAD_CHAPTERS=true
       - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_traefik_network"
+      - "traefik.http.routers.suwayomi.rule=Host(`suwayomi.internal`)"
+      - "traefik.http.routers.suwayomi.tls=true"
+      - "traefik.http.routers.suwayomi.tls.certresolver=charlie"
+      - "traefik.http.routers.suwayomi.entrypoints=websecure"
     volumes:
       - /mnt/shipyard/white container/Comics:/home/suwayomi/.local/share/Tachidesk/mangas
       - suwayomi_data:/home/suwayomi/.local/share/Tachidesk
