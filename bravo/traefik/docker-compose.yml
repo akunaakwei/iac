@@ -37,10 +37,7 @@ services:
       - "443:443"
       - "8084:8080"
     networks:
-      traefik_network:
-        aliases:
-          - "traefik"
-          - "bravo.traefik.internal"
+      - traefik_network
     dns:
       - 192.168.0.3
     volumes:
