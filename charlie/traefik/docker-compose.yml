@@ -65,7 +65,7 @@ services:
       - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
-      TZ=Europe/Berlin
+      TZ: Europe/Berlin
     ports:
       - "80:80"
       - "443:443"
