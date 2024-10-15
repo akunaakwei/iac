@@ -7,6 +7,7 @@ services:
       - "DOCKER_STEPCA_INIT_NAME=Smallstep"
       - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep,smallstep.internal"
       - "DOCKER_STEPCA_INIT_ACME=true"
+      - TZ=Europe/Berlin    # optional: set desired timezone
     networks:
       traefik_network:
         aliases:
@@ -64,6 +65,7 @@ services:
       - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
+      TZ=Europe/Berlin
     ports:
       - "80:80"
       - "443:443"

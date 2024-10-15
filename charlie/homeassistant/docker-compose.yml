@@ -19,6 +19,8 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+    environment:
+      - TZ=Europe/Berlin
     networks:
       ha_network:
         ipv4_address: 192.168.0.4
