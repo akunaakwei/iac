@@ -14,10 +14,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_traefik_network"
-      - "traefik.http.routers.suwayomi.rule=Host(`planka.internal`)"
-      - "traefik.http.routers.suwayomi.tls=true"
-      - "traefik.http.routers.suwayomi.tls.certresolver=bravo"
-      - "traefik.http.routers.suwayomi.entrypoints=websecure"
+      - "traefik.http.routers.planka.rule=Host(`planka.internal`)"
+      - "traefik.http.routers.planka.tls=true"
+      - "traefik.http.routers.planka.tls.certresolver=bravo"
+      - "traefik.http.routers.planka.entrypoints=websecure"
     environment:
       - BASE_URL=https://planka.internal
       - DATABASE_URL=postgresql://postgres@postgres/planka
