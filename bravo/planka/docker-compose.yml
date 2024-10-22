@@ -7,7 +7,7 @@ services:
       - project-background-images:/app/public/project-background-images
       - attachments:/app/private/attachments
     ports:
-      - 3000:1337
+      - 3010:1337
     networks:
       - planka_network
       - traefik_network
