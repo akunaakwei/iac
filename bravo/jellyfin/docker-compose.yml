@@ -7,6 +7,7 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
       - JELLYFIN_PublishedServerUrl=https://jellyfin.internal
+      - DOCKER_MODS=ghcr.io/intro-skipper/intro-skipper-docker-mod
     volumes:
       - jellyfin_data:/config
       - /mnt/shipyard/white container:/data/white container
