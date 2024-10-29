@@ -10,6 +10,8 @@ services:
     volumes:
       - jellyfin_data:/config
       - /mnt/shipyard/white container:/data/white container
+    devices:
+      - /dev/dri:/dev/dri
     networks:
       - traefik_network
     ports:
