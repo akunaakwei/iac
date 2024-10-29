@@ -19,6 +19,7 @@ services:
       - "traefik.http.routers.planka.tls.certresolver=bravo"
       - "traefik.http.routers.planka.entrypoints=websecure"
     environment:
+      - TZ=Europe/Berlin
       - BASE_URL=https://planka.internal
       - DATABASE_URL=postgresql://postgres@postgres/planka
       - SECRET_KEY=notsecretkey

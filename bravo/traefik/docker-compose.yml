@@ -41,7 +41,8 @@ services:
       - "traefik.http.routers.api.tls.certresolver=bravo"
       - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
-      LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/roots.pem"
+      - TZ=Europe/Berlin
+      - LEGO_CA_CERTIFICATES=/usr/local/share/ca-certificates/roots.pem
     ports:
       - "80:80"
       - "443:443"
