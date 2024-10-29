@@ -17,6 +17,8 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - webui_data:/app/backend/data
+    environment:
+      - TZ=Europe/Berlin
 
   ollama:
     image: ollama/ollama:latest
