@@ -28,6 +28,7 @@ services:
       - "--certificatesResolvers.bravo.acme.httpChallenge=true"
       - "--certificatesResolvers.bravo.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.bravo.acme.storage=/traefik_data/acme.json"
+      - "--certificatesresolvers.bravo.acme.certificatesDuration=24"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`bravo.traefik.internal`)"

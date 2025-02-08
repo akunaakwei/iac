@@ -46,6 +46,7 @@ services:
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
+      - "--certificatesresolvers.charlie.acme.certificatesDuration=24"
     labels:
       - "traefik.enable=true"
       # - "traefik.http.middlewares.httpsonly.redirectscheme.scheme=https"
