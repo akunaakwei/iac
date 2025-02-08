@@ -25,6 +25,9 @@ services:
       ha_network:
         ipv4_address: 192.168.0.4
       traefik_network:
+        aliases:
+          - "homeassistant"
+          - "homeassistant.internal"
 volumes:
   homeassistant_data:
 networks:
