@@ -42,7 +42,7 @@ services:
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
       - "--certificatesResolvers.charlie.acme.email=admin"
-      - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9000/acme/acme/directory"
+      - "--certificatesresolvers.charlie.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
       - "--certificatesResolvers.charlie.acme.httpChallenge=true"
       - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
