@@ -25,8 +25,8 @@ services:
       - "--entryPoints.websecure.address=:443"
       - "--certificatesResolvers.bravo.acme.email=admin"
       - "--certificatesresolvers.bravo.acme.caserver=https://smallstep.internal:9010/acme/acme/directory"
-      - "--certificatesResolvers.bravo.acme.httpChallenge=true"
-      - "--certificatesResolvers.bravo.acme.httpChallenge.entryPoint=web"
+      - "--certificatesResolvers.bravo.acme.httpchallenge=true"
+      - "--certificatesResolvers.bravo.acme.httpchallenge.entryPoint=web"
       - "--certificatesresolvers.bravo.acme.storage=/traefik_data/acme.json"
       - "--certificatesresolvers.bravo.acme.certificatesDuration=24"
     labels:

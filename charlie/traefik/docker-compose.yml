@@ -43,8 +43,8 @@ services:
       - "--entryPoints.websecure.address=:443"
       - "--certificatesResolvers.charlie.acme.email=admin"
       - "--certificatesresolvers.charlie.acme.caserver=https://smallstep:9000/acme/acme/directory"
-      - "--certificatesResolvers.charlie.acme.httpChallenge=true"
-      - "--certificatesResolvers.charlie.acme.httpChallenge.entryPoint=web"
+      - "--certificatesResolvers.charlie.acme.httpchallenge=true"
+      - "--certificatesResolvers.charlie.acme.httpchallenge.entryPoint=web"
       - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
       - "--certificatesresolvers.charlie.acme.certificatesDuration=24"
     labels:
