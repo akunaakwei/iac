@@ -27,6 +27,10 @@ services:
     networks:
       pihole_network:
         ipv4_address: 192.168.0.3
+      traefik_network:
+        aliases:
+          - "pihole"
+          - "pihole.internal"
 volumes:
   pihole_data:
     driver: local
@@ -43,3 +47,6 @@ networks:
         - subnet: 192.168.0.0/24
           ip_range: 192.168.0.3/32
           gateway: 192.168.0.1
+  traefik_network:
+    external: true
+    name: traefik_traefik_network
