@@ -89,5 +89,3 @@ volumes:
 networks:
   traefik_network:
     driver: bridge
-    dns:
-      - 192.168.0.3
