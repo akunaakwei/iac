@@ -18,7 +18,7 @@ services:
     volumes:
       - "smallstep_data:/home/step"
     healthcheck: # optional: remember to adapt the host:port to your environment
-      test: "wget -q --tries=1 --no-check-certificate https://localhost:9000/health -O - | grep -Eo '\"status\"\\s*:\\s*ok'"
+      test: "wget -q --tries=1 --no-check-certificate https://127.0.0.1:9000/health -O - | grep -Eo '\"status\"\\s*:\\s*ok'"
       interval: 10s
       timeout: 10s
       retries: 3
