@@ -22,14 +22,6 @@ services:
     environment:
       - TZ=Europe/Berlin
     network_mode: host
-    networks:
-      traefik_network:
-        aliases:
-          - homeassistant
-          - homeassistant.internal
 volumes:
   homeassistant_data:
-networks:
-  traefik_network:
-    external: true
-    name: traefik_traefik_network
+    driver: local
