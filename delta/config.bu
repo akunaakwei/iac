@@ -30,6 +30,10 @@ storage:
       mode: 0644
       contents:
         inline: KEYMAP=de
+    # disable systemd dns stub listener
+    - path: /etc/systemd/resolved.conf
+      append:
+        - inline: DNSStubListener=no
     # add docker-compose
     - path: /opt/extensions/docker_compose/docker_compose-2.24.5-x86-64.raw
       mode: 0644
