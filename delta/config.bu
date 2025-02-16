@@ -50,6 +50,10 @@ storage:
       target: /usr/lib/systemd/system/docker.service
       hard: false
       overwrite: true
+    # enable docker-compose
+    - target: /opt/extensions/docker_compose/docker_compose-2.24.5-x86-64.raw
+      path: /etc/extensions/docker_compose.raw
+      hard: false
 systemd:
   units:
     # ensure docker starts automatically instead of being only socket-activated
