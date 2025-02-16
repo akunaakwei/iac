@@ -48,36 +48,7 @@ storage:
     # add pihole
     - path: /opt/pihole/docker-compose.yml
       contents:
-        inline: |
-          services:
-            pihole:
-              container_name: pihole
-              image: pihole/pihole:latest
-              environment:
-                TZ: Europe/Berlin
-                TEMPERATUREUNIT: c
-                ServerIP: 192.168.0.6
-                PIHOLE_DNS_: 8.8.8.8;8.8.4.4
-                DNSSEC: true
-                DHCP_ACTIVE: true
-                DHCP_START: 192.168.0.10
-                DHCP_END: 192.168.0.190
-                DHCP_ROUTER: 192.168.0.1
-                PIHOLE_DOMAIN: internal
-                VIRTUAL_HOST: pihole.internal
-              volumes:
-                - pihole_data:/etc/pihole/
-                - dnsmasq_data:/etc/dnsmasq.d/
-              cap_add:
-                - NET_ADMIN
-              restart: always
-              privileged: true
-              network_mode: host
-          volumes:
-            pihole_data:
-              driver: local
-            dnsmasq_data:
-              driver: local
+        local: pihole/docker-compose.yml
   links:
     # set the timezone to europe/berlin
     - path: /etc/localtime
