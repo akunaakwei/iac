@@ -38,6 +38,9 @@ storage:
     - path: /etc/sysupdate.docker_compose.d/docker_compose.conf
       contents:
         source: https://github.com/flatcar/sysext-bakery/releases/download/latest/docker_compose.conf
+    - path: /etc/sysupdate.d/noop.conf
+      contents:
+        source: https://github.com/flatcar/sysext-bakery/releases/download/latest/noop.conf
   links:
     # set the timezone to europe/berlin
     - path: /etc/localtime
