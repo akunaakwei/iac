@@ -16,6 +16,6 @@ storage:
           [Match]
           Name=enp1s0
           [Network]
-          Address=192.168.0.4/24
+          Address=192.168.0.6/24
           Gateway=192.168.0.1
           DNS=8.8.8.8
