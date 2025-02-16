@@ -64,7 +64,7 @@ systemd:
         ConditionPathExists=!/var/lib/docker.btrfs
         [Service]
         Type=oneshot
-        ExecStart=/usr/bin/truncate --size=12G /var/lib/docker.btrfs
+        ExecStart=/usr/bin/truncate --size=16G /var/lib/docker.btrfs
         ExecStart=/usr/sbin/mkfs.btrfs /var/lib/docker.btrfs
     # mount the btrfs filesystem
     - name: var-lib-docker.mount
