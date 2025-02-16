@@ -1,29 +1,6 @@
 variant: flatcar
 version: 1.1.0
-storage:
-  files:
-    # bluetooth firmware
-    - path: /lib/firmware/brcm/BCM4345C0.hcd
-      contents:
-        local: overlayfs/lib/firmware/brcm/BCM4345C0.hcd
-    # wifi firmware
-    - path: /lib/firmware/brcm/brcmfmac43455-sdio.bin
-      contents:
-        local: overlayfs/lib/firmware/brcm/brcmfmac43455-sdio.bin
-    - path: /lib/firmware/brcm/brcmfmac43455-sdio.clm_blob
-      contents:
-        local: overlayfs/lib/firmware/brcm/brcmfmac43455-sdio.clm_blob
-    - path: /lib/firmware/brcm/brcmfmac43455-sdio.txt
-      contents:
-        local: overlayfs/lib/firmware/brcm/brcmfmac43455-sdio.txt
-  links:
-    - path: /lib/firmware/brcm/brcmfmac43455-sdio.BESSTAR TECH LIMITEDb-Z83-F.bin
-      target: /lib/firmware/brcm/brcmfmac43455-sdio.bin
-    - path: /lib/firmware/brcm/brcmfmac43455-sdio.BESSTAR TECH LIMITED-Z83-F.clm_blob
-      target: /lib/firmware/brcm/brcmfmac43455-sdio.clm_blob
-    - path: /lib/firmware/brcm/brcmfmac43455-sdio.BESSTAR TECH LIMITED-Z83-F.txt
-      target: /lib/firmware/brcm/brcmfmac43455-sdio.txt
 ignition:
   config:
-    merge:
-      - source: https://raw.githubusercontent.com/akunaakwei/iac/refs/heads/main/delta/config.ign
+    replace:
+      source: https://raw.githubusercontent.com/akunaakwei/iac/refs/heads/main/delta/config.ign
