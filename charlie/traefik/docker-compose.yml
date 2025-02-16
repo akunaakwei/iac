@@ -4,19 +4,17 @@ services:
     ports:
       - 9010:9000
     environment:
-      - "DOCKER_STEPCA_INIT_NAME=Smallstep"
-      - "DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep,smallstep.internal"
-      - "DOCKER_STEPCA_INIT_ACME=true"
+      - DOCKER_STEPCA_INIT_NAME=Smallstep
+      - DOCKER_STEPCA_INIT_DNS_NAMES=localhost,smallstep,smallstep.internal
+      - DOCKER_STEPCA_INIT_ACME=true
       - TZ=Europe/Berlin    # optional: set desired timezone
     networks:
       traefik_network:
         aliases:
-          - "smallstep"
-          - "smallstep.internal"
-    dns:
-      - 192.168.0.3
+          - smallstep
+          - smallstep.internal
     volumes:
-      - "smallstep_data:/home/step"
+      - smallstep_data:/home/step
     healthcheck: # optional: remember to adapt the host:port to your environment
       test: "wget -q --tries=1 --no-check-certificate https://smallstep:9000/health -O - | grep -Eo '\"status\"\\s*:\\s*\"ok\"'"
       interval: 10s
@@ -25,7 +23,7 @@ services:
       start_period: 10s
     restart: unless-stopped
   traefik:
-    image: "traefik:latest"
+    image: traefik:latest
     # needs to be privileged to access docker socket
     privileged: true
     depends_on:
@@ -48,38 +46,38 @@ services:
       - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
       - "--certificatesresolvers.charlie.acme.certificatesDuration=24"
     labels:
-      - "traefik.enable=true"
-      # - "traefik.http.middlewares.httpsonly.redirectscheme.scheme=https"
-      # - "traefik.http.middlewares.httpsonly.redirectscheme.permanent=true"
-      # - "traefik.http.routers.httpsonly.rule=HostRegexp(`{any:.*}`)"
-      # - "traefik.http.routers.httpsonly.middlewares=httpsonly"
-      # - "traefik.http.routers.httpsonly.entrypoints=web"
-      - "traefik.http.routers.dashboard.rule=Host(`charlie.traefik.internal`)"
-      - "traefik.http.routers.dashboard.service=dashboard@internal"
-      - "traefik.http.routers.dashboard.entrypoints=web,websecure"
-      - "traefik.http.routers.api.rule=Host(`charlie.traefik.internal`) && PathPrefix(`/api`)"
-      - "traefik.http.routers.api.service=api@internal"
-      - "traefik.http.routers.dashboard.tls=true"
-      - "traefik.http.routers.dashboard.tls.certresolver=charlie"
-      - "traefik.http.routers.api.tls=true"
-      - "traefik.http.routers.api.tls.certresolver=charlie"
-      - "traefik.http.routers.api.entrypoints=web,websecure"
+      - traefik.enable=true
+      # - traefik.http.middlewares.httpsonly.redirectscheme.scheme=https
+      # - traefik.http.middlewares.httpsonly.redirectscheme.permanent=true
+      # - traefik.http.routers.httpsonly.rule=HostRegexp(`{any:.*}`)
+      # - traefik.http.routers.httpsonly.middlewares=httpsonly
+      # - traefik.http.routers.httpsonly.entrypoints=web
+      - traefik.http.routers.dashboard.rule=Host(`charlie.traefik.internal`)
+      - traefik.http.routers.dashboard.service=dashboard@internal
+      - traefik.http.routers.dashboard.entrypoints=web,websecure
+      - traefik.http.routers.api.rule=Host(`charlie.traefik.internal`) && PathPrefix(`/api`)
+      - traefik.http.routers.api.service=api@internal
+      - traefik.http.routers.dashboard.tls=true
+      - traefik.http.routers.dashboard.tls.certresolver=charlie
+      - traefik.http.routers.api.tls=true
+      - traefik.http.routers.api.tls.certresolver=charlie
+      - traefik.http.routers.api.entrypoints=web,websecure
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
       TZ: Europe/Berlin
     ports:
-      - "80:80"
-      - "443:443"
-      - "8084:8080"
+      - 80:80
+      - 443:443
+      - 8084:8080
     networks:
       traefik_network:
         aliases:
-          - "traefik"
-          - "charlie.traefik.internal"
+          - traefik
+          - charlie.traefik.internal
     volumes:
-      - "/run/podman/podman.sock:/var/run/docker.sock:ro"
-      - "smallstep_data:/usr/local/share/ca-certificates:ro"
-      - "traefik_data:/traefik_data"
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - smallstep_data:/usr/local/share/ca-certificates:ro
+      - traefik_data:/traefik_data
     restart: unless-stopped
 volumes:
   smallstep_data:

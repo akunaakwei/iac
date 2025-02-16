@@ -1,9 +1,9 @@
 services:
   ntfy:
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
-    image: binwiederhier/ntfy:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: binwiederhier/ntfy:latest
     container_name: ntfy
     command:
       - serve
