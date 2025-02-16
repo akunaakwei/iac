@@ -8,3 +8,14 @@ passwd:
         - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjQg4xxpoNQeUuiapCXuahcnDmLvLq1H0B2CJTzdzKW
       groups:
         - sudo
+storage:
+  files:
+    - path: /etc/systemd/network/00-enp1s0.network
+      contents:
+        inline: |
+          [Match]
+          Name=enp1s0
+          [Network]
+          Address=192.168.0.4/24
+          Gateway=192.168.0.1
+          DNS=8.8.8.8
