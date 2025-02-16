@@ -10,6 +10,7 @@ passwd:
         - sudo
 storage:
   files:
+    # static ip
     - path: /etc/systemd/network/00-enp1s0.network
       contents:
         inline: |
@@ -19,3 +20,17 @@ storage:
           Address=192.168.0.6/24
           Gateway=192.168.0.1
           DNS=8.8.8.8
+    # set the hostname to charlie
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: delta
+    # set the keyboard layout to de
+    - path: /etc/vconsole.conf
+      mode: 0644
+      contents:
+        inline: KEYMAP=de
+  links:
+    # set the timezone to europe/berlin
+    - path: /etc/localtime
+      target: ../usr/share/zoneinfo/Europe/Berlin
