@@ -6,10 +6,7 @@ services:
       - ntfy_cache:/ntfy_cache
     command: chown -R 1000:1000 /ntfy_cache
   ntfy:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # image: binwiederhier/ntfy:latest
+    image: binwiederhier/ntfy:latest
     container_name: ntfy
     command:
       - serve
