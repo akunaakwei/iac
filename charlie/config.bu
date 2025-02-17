@@ -53,9 +53,6 @@ storage:
     - path: /opt/ntfy/docker-compose.yml
       contents:
         local: ntfy/docker-compose.yml
-    - path: /opt/ntfy/Dockerfile
-      contents:
-        local: ntfy/Dockerfile
     - path: /opt/ntfy/server.yml
       contents:
         local: ntfy/server.yml

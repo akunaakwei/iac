@@ -1,6 +1,12 @@
 services:
+  chown:
+    image: busybox:stable-musl
+    user: root
+    volumes:
+      - homeassistant_data:/homeassistant_data
+    command: chown -R 1000:1000 /homeassistant_data
   homeassistant:
-    image: "homeassistant/home-assistant:latest"
+    image: lscr.io/linuxserver/homeassistant:latest
     volumes:
         - homeassistant_data:/config
         - /etc/localtime:/etc/localtime:ro
@@ -12,16 +18,19 @@ services:
       - traefik.http.routers.homeassistant.tls=true
       - traefik.http.routers.homeassistant.tls.certresolver=charlie
       - traefik.http.routers.homeassistant.entrypoints=websecure
-    ports:
-      - 8123:8123
     restart: unless-stopped
-    privileged: true
     cap_add:
       - NET_ADMIN
       - NET_RAW
     environment:
       - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
     network_mode: host
+    depends_on:
+      chown:
+        # Wait for the ownership to change
+        condition: service_completed_successfully
 volumes:
   homeassistant_data:
     driver: local
