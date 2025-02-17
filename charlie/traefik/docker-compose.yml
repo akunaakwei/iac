@@ -36,6 +36,7 @@ services:
     image: traefik:latest
     # needs to be privileged to access docker socket
     privileged: true
+    user: root
     depends_on:
       stepca:
         condition: service_healthy
