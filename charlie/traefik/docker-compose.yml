@@ -32,15 +32,8 @@ services:
     depends_on:
       chown_stepca:
         condition: service_completed_successfully
-  chown_traefik:
-    image: busybox:stable-musl
-    user: root
-    volumes:
-      - traefik_data:/traefik_data
-    command: chown -R 1000:1000 /traefik_data
   traefik:
     image: traefik:latest
-    user: 1000:1000
     # needs to be privileged to access docker socket
     privileged: true
     depends_on:
