@@ -7,7 +7,7 @@ services:
     command: chown -R 1000:1000 /smallstep_data
   stepca:
     image: smallstep/step-ca:latest
-    user: 1000
+    user: 1000:1000
     ports:
       - 9010:9000
     environment:
@@ -40,7 +40,7 @@ services:
     command: chown -R 1000:1000 /traefik_data
   traefik:
     image: traefik:latest
-    user: 1000
+    user: 1000:1000
     # needs to be privileged to access docker socket
     privileged: true
     depends_on:
