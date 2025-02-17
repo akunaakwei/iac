@@ -63,22 +63,22 @@ services:
       - "--certificatesresolvers.charlie.acme.storage=/traefik_data/acme.json"
       - "--certificatesresolvers.charlie.acme.certificatesDuration=24"
     labels:
-      - traefik.enable=true
+      - "traefik.enable=true"
       # - traefik.http.middlewares.httpsonly.redirectscheme.scheme=https
       # - traefik.http.middlewares.httpsonly.redirectscheme.permanent=true
       # - traefik.http.routers.httpsonly.rule=HostRegexp(`{any:.*}`)
       # - traefik.http.routers.httpsonly.middlewares=httpsonly
       # - traefik.http.routers.httpsonly.entrypoints=web
-      - traefik.http.routers.dashboard.rule=Host(`charlie.traefik.internal`)
-      - traefik.http.routers.dashboard.service=dashboard@internal
-      - traefik.http.routers.dashboard.entrypoints=web,websecure
-      - traefik.http.routers.api.rule=Host(`charlie.traefik.internal`) && PathPrefix(`/api`)
-      - traefik.http.routers.api.service=api@internal
-      - traefik.http.routers.dashboard.tls=true
-      - traefik.http.routers.dashboard.tls.certresolver=charlie
-      - traefik.http.routers.api.tls=true
-      - traefik.http.routers.api.tls.certresolver=charlie
-      - traefik.http.routers.api.entrypoints=web,websecure
+      - "traefik.http.routers.dashboard.rule=Host(`charlie.traefik.internal`)"
+      - "traefik.http.routers.dashboard.service=dashboard@internal"
+      - "traefik.http.routers.dashboard.entrypoints=web,websecure"
+      - "traefik.http.routers.api.rule=Host(`charlie.traefik.internal`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.dashboard.tls=true"
+      - "traefik.http.routers.dashboard.tls.certresolver=charlie"
+      - "traefik.http.routers.api.tls=true"
+      - "traefik.http.routers.api.tls.certresolver=charlie"
+      - "traefik.http.routers.api.entrypoints=web,websecure"
     environment:
       LEGO_CA_CERTIFICATES: "/usr/local/share/ca-certificates/certs/root_ca.crt"
       TZ: Europe/Berlin
