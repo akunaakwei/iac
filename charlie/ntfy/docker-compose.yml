@@ -4,7 +4,8 @@ services:
     user: root
     volumes:
       - ntfy_cache:/ntfy_cache
-    command: chown -R 1000:1000 /ntfy_cache
+      - /opt/ntfy/server.yml:/server.yml
+    command: chown -R 1000:1000 /ntfy_cache && chown -R 1000:1000 /server.yml
   ntfy:
     image: binwiederhier/ntfy:latest
     container_name: ntfy
