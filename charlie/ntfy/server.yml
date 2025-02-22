@@ -68,7 +68,7 @@ base-url: https://ntfy.internal
 #   If you are running ntfy with systemd, make sure this cache file is owned by the
 #   ntfy user and group by running: chown ntfy.ntfy <filename>.
 #
-cache-file: <filename>
+cache-file: /var/cache/ntfy/cache.db
 cache-duration: "48h"
 cache-startup-queries: |
   pragma journal_mode = WAL;

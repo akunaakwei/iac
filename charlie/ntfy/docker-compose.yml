@@ -16,6 +16,7 @@ services:
       - TZ=Europe/Berlin    # optional: set desired timezone
     volumes:
       - ntfy_cache:/var/cache/ntfy
+      - ntfy_data:/etc/ntfy
       - /opt/ntfy/server.yml:/etc/ntfy/server.yml
     networks:
       - traefik_network
@@ -38,6 +39,8 @@ services:
         condition: service_completed_successfully
 volumes:
   ntfy_cache:
+    driver: local
+  ntfy_data:
     driver: local
 networks:
   traefik_network:
