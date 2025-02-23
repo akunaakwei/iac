@@ -33,7 +33,6 @@ services:
       - 8000
       - 2525
     ports:
-      - 8525:2525
       - 8531:8000
     environment:
       - DATABASE_URL=postgres://postgres:windmill@db/windmill?sslmode=disable
