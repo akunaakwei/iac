@@ -52,6 +52,7 @@ services:
       - traefik.http.routers.windmill.tls=true
       - traefik.http.routers.windmill.tls.certresolver=bravo
       - traefik.http.routers.windmill.entrypoints=websecure
+      - traefik.http.services.windmill.loadbalancer.server.port=8000
 
   windmill_worker:
     image: ghcr.io/windmill-labs/windmill:main
