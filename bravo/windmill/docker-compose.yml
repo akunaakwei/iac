@@ -20,6 +20,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - windmill_network
 
   windmill_server:
     image: ghcr.io/windmill-labs/windmill:main
@@ -41,6 +43,7 @@ services:
     volumes:
       - worker_logs:/tmp/windmill/logs
     networks:
+      - windmill_network
       - traefik_network
     labels:
       - traefik.enable=true
@@ -74,6 +77,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - worker_dependency_cache:/tmp/windmill/cache
       - worker_logs:/tmp/windmill/logs
+    networks:
+      - windmill_network
 
   ## This worker is specialized for "native" jobs. Native jobs run in-process and thus are much more lightweight than other jobs
   windmill_worker_native:
@@ -99,6 +104,8 @@ services:
         condition: service_healthy
     volumes:
       - worker_logs:/tmp/windmill/logs
+    networks:
+      - windmill_network
   # This worker is specialized for reports or scraping jobs. It is assigned the "reports" worker group which has an init script that installs chromium and can be targeted by using the "chromium" worker tag.
   # windmill_worker_reports:
   #   image: ghcr.io/windmill-labs/windmill:main
@@ -124,6 +131,8 @@ services:
   #     - /var/run/docker.sock:/var/run/docker.sock
   #     - worker_dependency_cache:/tmp/windmill/cache
   #     - worker_logs:/tmp/windmill/logs
+  #   networks:
+  #     - windmill_network
 
   # The indexer powers full-text job and log search, an EE feature.
   windmill_indexer:
@@ -144,6 +153,8 @@ services:
     volumes:
       - windmill_index:/tmp/windmill/search
       - worker_logs:/tmp/windmill/logs
+    networks:
+      - windmill_network
 
   lsp:
     image: ghcr.io/windmill-labs/windmill-lsp:latest
@@ -153,6 +164,8 @@ services:
       - 3001
     volumes:
       - lsp_cache:/pyls/.cache
+    networks:
+      - windmill_network
 
 volumes:
   db_data: null
@@ -162,6 +175,8 @@ volumes:
   lsp_cache: null
 
 networks:
+  windmill_network:
+    driver: bridge
   traefik_network:
     external: true
     name: traefik_traefik_network
