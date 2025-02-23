@@ -33,7 +33,7 @@ services:
     ports:
       - 8525:2525
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db/windmill?sslmode=disable
+      - DATABASE_URL=postgres://postgres:windmill@db/windmill?sslmode=disable
       - MODE=server
     depends_on:
       db:
@@ -62,7 +62,7 @@ services:
           # for GB, use syntax '2Gi'
     restart: unless-stopped
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db/windmill?sslmode=disable
+      - DATABASE_URL=postgres://postgres:windmill@db/windmill?sslmode=disable
       - MODE=worker
       - WORKER_GROUP=default
     depends_on:
@@ -89,7 +89,7 @@ services:
           # for GB, use syntax '2Gi'
     restart: unless-stopped
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db/windmill?sslmode=disable
+      - DATABASE_URL=postgres://postgres:windmill@db/windmill?sslmode=disable
       - MODE=worker
       - WORKER_GROUP=native
       - NUM_WORKERS=8
@@ -112,7 +112,7 @@ services:
   #         # for GB, use syntax '2Gi'
   #   restart: unless-stopped
   #   environment:
-  #     - DATABASE_URL=postgres://postgres:postgres@db/windmill?sslmode=disable
+  #     - DATABASE_URL=postgres://postgres:windmill@db/windmill?sslmode=disable
   #     - MODE=worker
   #     - WORKER_GROUP=reports
   #   depends_on:
@@ -136,7 +136,7 @@ services:
       - 8001
     environment:
       - PORT=8001
-      - DATABASE_URL=postgres://postgres:postgres@db/windmill?sslmode=disable
+      - DATABASE_URL=postgres://postgres:windmill@db/windmill?sslmode=disable
       - MODE=indexer
     depends_on:
       db:
