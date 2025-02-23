@@ -3,13 +3,13 @@ service:
     image: docker.n8n.io/n8nio/n8n
     container_name: n8n
     labels:
-      - "raefik.enable=true
-      - "raefik.docker.network=traefik_traefik_network
-      - "raefik.http.services.n8n.loadbalancer.server.port=5678
-      - "raefik.http.routers.n8n.rule=Host(`n8n.internal`)
-      - "raefik.http.routers.n8n.tls=true
-      - "raefik.http.routers.n8n.tls.certresolver=bravo
-      - "raefik.http.routers.n8n.entrypoints=websecure
+      - traefik.enable=true
+      - traefik.docker.network=traefik_traefik_network
+      - traefik.http.services.n8n.loadbalancer.server.port=5678
+      - traefik.http.routers.n8n.rule=Host(`n8n.internal`)
+      - traefik.http.routers.n8n.tls=true
+      - traefik.http.routers.n8n.tls.certresolver=bravo
+      - traefik.http.routers.n8n.entrypoints=websecure
     environment:
       - N8N_HOST=n8n
       - N8N_PORT=5678
