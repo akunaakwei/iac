@@ -29,6 +29,9 @@ services:
     restart: unless-stopped
     expose:
       - 8000
+      - 2525
+    ports:
+      - 8525:2525
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db/windmill?sslmode=disable
       - MODE=server
