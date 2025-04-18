@@ -67,32 +67,6 @@ systemd:
     # ensure docker starts automatically instead of being only socket-activated
     - name: docker.service
       enabled: true
-    # create a btrfs filesystem for docker
-    - name: format-var-lib-docker.service
-      contents: |
-        [Unit]
-        Before=docker.service var-lib-docker.mount
-        RequiresMountsFor=/var/lib
-        ConditionPathExists=!/var/lib/docker.btrfs
-        [Service]
-        Type=oneshot
-        ExecStart=/usr/bin/truncate --size=16G /var/lib/docker.btrfs
-        ExecStart=/usr/sbin/mkfs.btrfs /var/lib/docker.btrfs
-    # mount the btrfs filesystem
-    - name: var-lib-docker.mount
-      enabled: true
-      contents: |
-        [Unit]
-        Before=docker.service
-        After=format-var-lib-docker.service
-        Requires=format-var-lib-docker.service
-        [Mount]
-        What=/var/lib/docker.btrfs
-        Where=/var/lib/docker
-        Type=btrfs
-        Options=loop,discard
-        [Install]
-        RequiredBy=docker.service
     # enable sysupdate
     - name: systemd-sysupdate.timer
       enabled: true
