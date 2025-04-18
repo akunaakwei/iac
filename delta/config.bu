@@ -19,6 +19,8 @@ storage:
           [Network]
           Address=192.168.0.6/24
           Gateway=192.168.0.1
+          Address=fe80::5e85:7eff:fe4f:cacf/64
+          Gateway=fe80::ca52:61ff:febc:14e
           DNS=8.8.8.8
     # set the hostname to charlie
     - path: /etc/hostname
