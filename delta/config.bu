@@ -22,6 +22,7 @@ storage:
           DNS=8.8.8.8
     # set the hostname to charlie
     - path: /etc/hostname
+      overwrite: true
       mode: 0644
       contents:
         inline: delta
