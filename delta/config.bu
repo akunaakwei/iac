@@ -12,6 +12,7 @@ storage:
   files:
     # static ip
     - path: /etc/systemd/network/00-enp1s0.network
+      overwrite: true
       contents:
         inline: |
           [Match]
@@ -28,6 +29,7 @@ storage:
         inline: delta
     # set the keyboard layout to de
     - path: /etc/vconsole.conf
+      overwrite: true
       mode: 0644
       contents:
         inline: KEYMAP=de
@@ -37,23 +39,28 @@ storage:
         - inline: DNSStubListener=no
     # add docker-compose
     - path: /opt/extensions/docker_compose/docker_compose-2.24.5-x86-64.raw
+      overwrite: true
       mode: 0644
       contents:
         source: https://github.com/flatcar/sysext-bakery/releases/download/latest/docker_compose-2.24.5-x86-64.raw
     - path: /etc/sysupdate.docker_compose.d/docker_compose.conf
+      overwrite: true
       contents:
         source: https://github.com/flatcar/sysext-bakery/releases/download/latest/docker_compose.conf
     - path: /etc/sysupdate.d/noop.conf
+      overwrite: true
       contents:
         source: https://github.com/flatcar/sysext-bakery/releases/download/latest/noop.conf
     # add pihole
     - path: /opt/pihole/docker-compose.yml
+      overwrite: true
       contents:
         local: pihole/docker-compose.yml
   links:
     # set the timezone to europe/berlin
     - path: /etc/localtime
       target: ../usr/share/zoneinfo/Europe/Berlin
+      overwrite: true
     # enable docker service
     - path: /etc/systemd/system/multi-user.target.wants/docker.service
       target: /usr/lib/systemd/system/docker.service
@@ -63,6 +70,7 @@ storage:
     - target: /opt/extensions/docker_compose/docker_compose-2.24.5-x86-64.raw
       path: /etc/extensions/docker_compose.raw
       hard: false
+      overwrite: true
 systemd:
   units:
     # ensure docker starts automatically instead of being only socket-activated
